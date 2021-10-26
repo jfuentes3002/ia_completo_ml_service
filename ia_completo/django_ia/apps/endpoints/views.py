@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, HttpResponse
 
 # Create your views here.
 
@@ -49,3 +49,8 @@ class MLAlgorithmStatusViewSet(mixins.RetrieveModelMixin, mixins.ListModelMixin,
 class MLRequestViewSet(mixins.RetrieveModelMixin, mixins.ListModelMixin, viewsets.GenericViewSet, mixins.UpdateModelMixin):
     serializer_class = MLRequestSerializer
     queryset = MLRequest.objects.all()
+
+def homePageView(request):
+    html = '<h2>Bienvenido a Sitio Web de Implementación de modelos de aprendizaje automático con Django</h2>'
+    html += '<p>Para acceder a la sección de API, haga clic <a href="http://127.0.0.1:8000/api/v1/" target="_blank">aquí</a></p>'
+    return HttpResponse(html)
